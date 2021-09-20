@@ -16,13 +16,20 @@ To install, setting up a conda environment first is recommended.
 
 To do so:
 
-    conda create --name patents-ai --python=3.9
-
+    conda create --name patents-ai python=3.9
+    
 Then activate the environment:
 
-    source activate patents-ai
+    conda activate patents-ai
 
-Or
+Then install dependencies, as follows:
 
-    source ~/anaconda3/bin/activate patents-ai
+    conda install pytorch torchvision torchaudio -c pytorch
+    pip install -r requirements.txt
+
+Once the dependencies are installed, run Jupyter:
+
+    jupyter notebook
+
+And navigate to the *analysis.ipynb*.
 
