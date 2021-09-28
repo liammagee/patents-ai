@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 100%;
+            height: 750px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "", "label": "", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "label": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Deep learning for visual understanding: A review", "label": "Deep learning for visual understanding: A review", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Deep convolutional neural networks for image classification: A comprehensive review", "label": "Deep convolutional neural networks for image classification: A comprehensive review", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Deepfashion: Powering robust clothes recognition and retrieval with rich annotations", "label": "Deepfashion: Powering robust clothes recognition and retrieval with rich annotations", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "3d shapenets: A deep representation for volumetric shapes", "label": "3d shapenets: A deep representation for volumetric shapes", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models", "label": "Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Benchmark Datasets for Fault Detection and Classification in Sensor Data", "label": "Benchmark Datasets for Fault Detection and Classification in Sensor Data", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "A style-based generator architecture for generative adversarial networks", "label": "A style-based generator architecture for generative adversarial networks", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "A compact embedding for facial expression similarity", "label": "A compact embedding for facial expression similarity", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Partnet: A large-scale benchmark for fine-grained and hierarchical part-level 3d object understanding", "label": "Partnet: A large-scale benchmark for fine-grained and hierarchical part-level 3d object understanding", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "3d object representations for fine-grained categorization", "label": "3d object representations for fine-grained categorization", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fashionista: A fashion-aware graphical system for exploring visually similar items", "label": "Fashionista: A fashion-aware graphical system for exploring visually similar items", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fashionai: A hierarchical dataset for fashion understanding", "label": "Fashionai: A hierarchical dataset for fashion understanding", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms", "label": "Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Fashion-gen: The generative fashion dataset and challenge", "label": "Fashion-gen: The generative fashion dataset and challenge", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Very deep convolutional networks for large-scale image recognition", "label": "Very deep convolutional networks for large-scale image recognition", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Going deeper with convolutions", "label": "Going deeper with convolutions", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Deep residual learning for image recognition", "label": "Deep residual learning for image recognition", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Densely connected convolutional networks", "label": "Densely connected convolutional networks", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Efficientnet: Rethinking model scaling for convolutional neural networks", "label": "Efficientnet: Rethinking model scaling for convolutional neural networks", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Central similarity quantization for efficient image and video retrieval", "label": "Central similarity quantization for efficient image and video retrieval", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Hashnet: Deep learning to hash by continuation", "label": "Hashnet: Deep learning to hash by continuation", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Incomplete multi-modal visual data grouping", "label": "Incomplete multi-modal visual data grouping", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Doubly Aligned Incomplete Multi-view Clustering", "label": "Doubly Aligned Incomplete Multi-view Clustering", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Incomplete Multiview Spectral Clustering With Adaptive Graph Learning", "label": "Incomplete Multiview Spectral Clustering With Adaptive Graph Learning", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Anchors bring ease: An embarrassingly simple approach to partial multi-view clustering", "label": "Anchors bring ease: An embarrassingly simple approach to partial multi-view clustering", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "A comparison of extrinsic clustering evaluation metrics based on formal constraints", "label": "A comparison of extrinsic clustering evaluation metrics based on formal constraints", "shape": "dot", "size": 10}, {"font": {"color": "white"}, "id": "Adaptive structure discovery for multimedia analysis using multiple features", "label": "Adaptive structure discovery for multimedia analysis using multiple features", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "", "to": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Deep learning for visual understanding: A review", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Deep convolutional neural networks for image classification: A comprehensive review", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Deepfashion: Powering robust clothes recognition and retrieval with rich annotations", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "3d shapenets: A deep representation for volumetric shapes", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Benchmark Datasets for Fault Detection and Classification in Sensor Data", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "A style-based generator architecture for generative adversarial networks", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "A compact embedding for facial expression similarity", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Partnet: A large-scale benchmark for fine-grained and hierarchical part-level 3d object understanding", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "3d object representations for fine-grained categorization", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Fashionista: A fashion-aware graphical system for exploring visually similar items", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Fashionai: A hierarchical dataset for fashion understanding", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Fashion-gen: The generative fashion dataset and challenge", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Very deep convolutional networks for large-scale image recognition", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Going deeper with convolutions", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Deep residual learning for image recognition", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Densely connected convolutional networks", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Efficientnet: Rethinking model scaling for convolutional neural networks", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Central similarity quantization for efficient image and video retrieval", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Hashnet: Deep learning to hash by continuation", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Incomplete multi-modal visual data grouping", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Doubly Aligned Incomplete Multi-view Clustering", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Incomplete Multiview Spectral Clustering With Adaptive Graph Learning", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Anchors bring ease: An embarrassingly simple approach to partial multi-view clustering", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "A comparison of extrinsic clustering evaluation metrics based on formal constraints", "weight": 1}, {"from": "PatentNet: A Large-Scale Incomplete Multiview, Multimodal, Multilabel Industrial Goods Image Database", "to": "Adaptive structure discovery for multimedia analysis using multiple features", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
